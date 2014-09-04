@@ -7,15 +7,8 @@ public abstract class Animal extends Fighter{
 
     protected double hunger = -1;
 
-    public abstract void sleep();
-
     public final void eat() {
         hunger = hunger - 0.2;
-    }
-
-    @Override
-    public double block() {
-        return defence;
     }
 
     @Override

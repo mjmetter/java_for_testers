@@ -31,11 +31,11 @@ public class Fight {
 
             // print actions for sensation
             System.out.println("Player 1 does action: " + action1.name());
-            System.out.println("And player 2 does action: " + action1.name());
+            System.out.println("And player 2 does action: " + action2.name());
 
             // then perform actions
-            fighter1.performAction(action1);
-            fighter2.performAction(action2);
+            fighter1.updateState(action1, action2, fighter2);
+            fighter2.updateState(action2, action1, fighter1);
 
             System.out.println("Health player 1: " + fighter1.getHealth());
             System.out.println("Health player 2: " + fighter2.getHealth());
