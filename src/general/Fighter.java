@@ -6,6 +6,7 @@ public abstract class Fighter {
     private double attack;
     private double hunger;
     protected double sleepHealthFactor = 1.5;
+    private Action actionOpponent;
 
     public Fighter() {
         this(10, 1.5);
@@ -45,6 +46,15 @@ public abstract class Fighter {
             default:
                 performAction(ownAction);
         }
+        setActionOpponent(opponentAction);
+    }
+
+    private void setActionOpponent(final Action actionOpponent) {
+        this.actionOpponent = actionOpponent;
+    }
+
+    public Action getLastActionOpponent() {
+        return actionOpponent;
     }
 
     public final void sleep() {
