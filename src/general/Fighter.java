@@ -18,18 +18,26 @@ public abstract class Fighter {
         this.attack = attack;
     }
 
-    public final double attack() {
-        health *= 0.9;
-        return attack;
+    public abstract Action getAction();
+
+    private void performAction(final Action ownAction) {
+        switch (ownAction) {
+            case ATTACK:
+                attack();
+                break;
+            case BLOCK:
+                block();
+                break;
+            case EAT:
+                eat();
+                break;
+            case SLEEP:
+                sleep();
+                break;
+            default:
+                throw new IllegalArgumentException("Did you forget to put a break statement in your switch block?");
+        }
     }
-
-    public void block() {
-        // do nothing
-    }
-
-    public abstract Action getAction(Fighter opponent);
-
-    public abstract void performAction(final Action ownAction);
 
     public void updateState(final Action ownAction, final Action opponentAction, final Fighter opponent) {
         switch(opponentAction) {
@@ -57,7 +65,20 @@ public abstract class Fighter {
         return actionOpponent;
     }
 
-    public final void sleep() {
+    private final double attack() {
+        health *= 0.9;
+        return attack;
+    }
+
+    private void block() {
+        // do nothing
+    }
+
+    private final void eat() {
+        hunger = hunger - 0.2;
+    }
+
+    private final void sleep() {
         health = health * sleepHealthFactor > maxHealth ? maxHealth : health * sleepHealthFactor;
         hunger += 0.2;
     }

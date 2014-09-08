@@ -6,7 +6,7 @@ import general.Fighter;
 public class DefensiveRobot extends Robot {
 
     @Override
-    public Action getAction(Fighter opponent) {
+    public Action getAction() {
         return Action.BLOCK;
     }
 }

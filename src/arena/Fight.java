@@ -26,8 +26,8 @@ public class Fight {
         if(fighter1.isAlive() && fighter2.isAlive()) {
 
             // first get actions based on current state
-            Action action1 = fighter1.getAction(fighter2);
-            Action action2 = fighter2.getAction(fighter1);
+            Action action1 = fighter1.getAction();
+            Action action2 = fighter2.getAction();
 
             // print actions for sensation
             System.out.println("Player 1 does action: " + action1.name());
