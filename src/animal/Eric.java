@@ -1,5 +1,6 @@
 package animal;
 
+
 import general.Action;
 
 public class Eric extends Dog {
