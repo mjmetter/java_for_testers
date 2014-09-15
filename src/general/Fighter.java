@@ -23,7 +23,7 @@ public abstract class Fighter {
     private void performAction(final Action ownAction) {
         switch (ownAction) {
             case ATTACK:
-                attack();
+//                attack(); already performed by opponent
                 break;
             case BLOCK:
                 block();
@@ -66,7 +66,7 @@ public abstract class Fighter {
     }
 
     private final double attack() {
-        health *= 0.9;
+        health *= 0.95;
         return attack;
     }
 
