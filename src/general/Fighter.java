@@ -44,7 +44,7 @@ public abstract class Fighter {
             case ATTACK:
                 // your own action gets negated since you're under attack, except defence
                 if(ownAction != Action.BLOCK) {
-                    health -= opponent.attack();
+                    health -= opponent.getAttackStrength();
                 }
                 break;
             case BLOCK:
@@ -65,8 +65,11 @@ public abstract class Fighter {
         return actionOpponent;
     }
 
-    private final double attack() {
-        health *= 0.9;
+    private final void attack() {
+        health *= 0.97;
+    }
+
+    private final double getAttackStrength() {
         return attack;
     }
 
