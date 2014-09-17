@@ -49,7 +49,7 @@ public abstract class Fighter {
                 break;
             case BLOCK:
                 if(ownAction != Action.ATTACK && ownAction != Action.BLOCK) {
-                    health *= 1.2;
+                    health = health + 1.5 > maxHealth ? maxHealth : health + 1.5;
                 }
             default:
                 performAction(ownAction);
@@ -66,7 +66,7 @@ public abstract class Fighter {
     }
 
     private final void attack() {
-        health *= 0.97;
+        health -= 0.5;
     }
 
     private final double getAttackStrength() {
@@ -82,8 +82,8 @@ public abstract class Fighter {
     }
 
     private final void sleep() {
-        health = health * sleepHealthFactor > maxHealth ? maxHealth : health * sleepHealthFactor;
         hunger += 0.2;
+        health = (hunger > 1) ? health - 0.5 : health + 0.5;
     }
 
     public boolean isAlive() {
