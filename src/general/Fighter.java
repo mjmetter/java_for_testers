@@ -5,16 +5,15 @@ public abstract class Fighter {
     private double maxHealth;
     private double attack;
     private double hunger;
-    protected double sleepHealthFactor = 1.5;
     private Action actionOpponent;
 
     public Fighter() {
         this(10, 2.5);
     }
 
-    public Fighter(final double maxHealth, final double attack) {
-        this.maxHealth = maxHealth;
-        this.health = maxHealth;
+    public Fighter(final double startHealth, final double attack) {
+        this.maxHealth = 1.5 * startHealth;
+        this.health = startHealth;
         this.attack = attack;
     }
 
