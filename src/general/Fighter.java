@@ -5,16 +5,15 @@ public abstract class Fighter {
     private double maxHealth;
     private double attack;
     private double hunger;
-    protected double sleepHealthFactor = 1.5;
     private Action actionOpponent;
 
     public Fighter() {
-        this(10, 1.5);
+        this(10, 2.5);
     }
 
-    public Fighter(final double maxHealth, final double attack) {
-        this.maxHealth = maxHealth;
-        this.health = maxHealth;
+    public Fighter(final double startHealth, final double attack) {
+        this.maxHealth = 1.5 * startHealth;
+        this.health = startHealth;
         this.attack = attack;
     }
 
@@ -44,12 +43,12 @@ public abstract class Fighter {
             case ATTACK:
                 // your own action gets negated since you're under attack, except defence
                 if(ownAction != Action.BLOCK) {
-                    health -= opponent.attack();
+                    health -= opponent.getAttackStrength();
                 }
                 break;
             case BLOCK:
                 if(ownAction != Action.ATTACK && ownAction != Action.BLOCK) {
-                    health *= 1.2;
+                    health = health + 1.5 > maxHealth ? maxHealth : health + 1.5;
                 }
             default:
                 performAction(ownAction);
@@ -65,8 +64,11 @@ public abstract class Fighter {
         return actionOpponent;
     }
 
-    private final double attack() {
-        health *= 0.9;
+    private final void attack() {
+        health -= 0.5;
+    }
+
+    private final double getAttackStrength() {
         return attack;
     }
 
@@ -79,8 +81,8 @@ public abstract class Fighter {
     }
 
     private final void sleep() {
-        health = health * sleepHealthFactor > maxHealth ? maxHealth : health * sleepHealthFactor;
         hunger += 0.2;
+        health = (hunger > 1) ? health - 0.5 : health + 0.5;
     }
 
     public boolean isAlive() {
