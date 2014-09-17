@@ -9,7 +9,7 @@ public abstract class Fighter {
     private Action actionOpponent;
 
     public Fighter() {
-        this(10, 1.5);
+        this(10, 2.5);
     }
 
     public Fighter(final double maxHealth, final double attack) {
