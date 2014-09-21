@@ -1,5 +1,7 @@
 package robot;
 
+//This Robot chat's allot, hope he doesn't bore you to death
+
 import general.Action;
 import java.util.InputMismatchException;
 import java.util.Scanner;
