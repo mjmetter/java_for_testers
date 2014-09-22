@@ -2,13 +2,15 @@ import animal.TweetyBird;
 import arena.Fight;
 import general.Fighter;
 import robot.DefensiveRobot;
+import robot.EdBot;
+import robot.Eric;
 import robot.KillerRobot;
 
 public class JavaForTesters {
 
     public static void main(String[] args) {
-        Fighter fighterInRedCorner = new KillerRobot();
-        Fighter fighterInBlueCorner = new TweetyBird();
+        Fighter fighterInRedCorner = new Eric();
+        Fighter fighterInBlueCorner = new EdBot();
 
         Fight fight = new Fight(fighterInRedCorner, fighterInBlueCorner, 10);
         while (!fight.isFinished()) {
