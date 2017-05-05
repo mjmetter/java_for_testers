@@ -12,6 +12,8 @@ public class JavaForTesters {
         Fighter fighterInRedCorner = new Eric();
         Fighter fighterInBlueCorner = new EdBot();
 
+	System.out.println(fight.getWinnerDescription().getDescription());
+
         Fight fight = new Fight(fighterInRedCorner, fighterInBlueCorner, 10);
         while (!fight.isFinished()) {
             System.out.println("Round " + fight.getRound() + ":");
